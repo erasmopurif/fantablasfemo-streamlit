@@ -1,6 +1,8 @@
 ### SPECIFIC IGNORES ###
 resources/
+app_*.py
 test_nb.ipynb
+tests.py
 
 ### PYTHON STANDARD IGNORES ###
 

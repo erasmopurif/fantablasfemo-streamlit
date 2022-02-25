@@ -58,5 +58,18 @@ def get_team_dicts(teams_html):
             roster_dict[p_name]["cost"] = int(p.find("td", {"data-key": "cost"}).text)
             roster_dict[p_name]["confirm"] = cost2confirm(roster_dict[p_name]["cost"])
         teams[team_name]["roster"] = roster_dict
+
+        roster_dict_list = []
+        for p in roster:
+            p_dict = {}
+            p_dict["role"] = p.find("td", {"data-key": "role"}).text.upper()
+            p_dict["name"] = p.find("td", {"data-key": "name"}).text.title()
+            # p_dict["id"] = int(p["data-id"])
+            p_dict["club"] = p.find("td", {"data-key": "team"}).text.upper()
+            # p_dict["price"] = int(p.find("td", {"data-key": "price"}).text)
+            p_dict["cost"] = int(p.find("td", {"data-key": "cost"}).text)
+            p_dict["confirm"] = cost2confirm(p_dict["cost"])
+            roster_dict_list.append(p_dict)
+        teams[team_name]["roster_table"] = roster_dict_list
     
     return teams
