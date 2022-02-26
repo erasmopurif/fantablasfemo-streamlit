@@ -48,10 +48,7 @@ def app():
     compute_costs = st.button("Calcola costi")
     if compute_costs:
         total_gain, total_confirm =  compute_gain_confirm(roster, selected_players)
-        # gain_cost, confirm_cost, _ = st.columns(3)
-        # with gain_cost:
         st.caption("Crediti incassati")
         st.write(str(total_gain))
-        # with confirm_cost:
         st.caption("Costo riconferme")
         st.write(str(total_confirm))
