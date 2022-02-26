@@ -28,7 +28,7 @@ def app():
     df_team = pd.DataFrame(roster, columns=["role", "name", "club", "cost", "confirm"])
     player_names = df_team["name"]
 
-    df_team.columns = ["Ruolo", "Giocatore", "Club", "Quot.", "Conferma"]
+    df_team.columns = ["Ruolo", "Giocatore", "Club", "Quot.", "Conf."]
 
     # CSS to inject contained in a string
     hide_table_row_index = """
@@ -48,10 +48,10 @@ def app():
     compute_costs = st.button("Calcola costi")
     if compute_costs:
         total_gain, total_confirm =  compute_gain_confirm(roster, selected_players)
-        gain_cost, confirm_cost = st.columns(2)
-        with gain_cost:
-            st.caption("Crediti incassati")
-            st.write(str(total_gain))
-        with confirm_cost:
-            st.caption("Costo riconferme")
-            st.write(str(total_confirm))
+        # gain_cost, confirm_cost, _ = st.columns(3)
+        # with gain_cost:
+        st.caption("Crediti incassati")
+        st.write(str(total_gain))
+        # with confirm_cost:
+        st.caption("Costo riconferme")
+        st.write(str(total_confirm))
