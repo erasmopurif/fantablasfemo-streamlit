@@ -14,29 +14,6 @@ def cost2confirm(cost):
         return 25
 
 
-# def get_team_dicts(teams_html):
-#     teams = {}
-#     for team in teams_html:
-#         idx = int(team["data-id"])
-#         teams[idx] = {}
-#         teams[idx]["name"] = team.h4.text 
-#         teams[idx]["trainer"] = team.h5.text
-#         teams[idx]["res_coins"] = team.small.next.next.strip()
-        
-#         roster = team.table.tbody.find_all("tr")[:25]
-#         roster_dict = {}
-#         for p in roster:
-#             pidx = int(p["data-id"])
-#             roster_dict[pidx] = {}
-#             roster_dict[pidx]["name"] = p.find("td", {"data-key": "name"}).text.title()
-#             roster_dict[pidx]["club"] = p.find("td", {"data-key": "team"}).text.upper()
-#             roster_dict[pidx]["price"] = int(p.find("td", {"data-key": "price"}).text)
-#             roster_dict[pidx]["cost"] = int(p.find("td", {"data-key": "cost"}).text)
-#             roster_dict[pidx]["confirm"] = cost2confirm(roster_dict[pidx]["cost"])
-#         teams[idx]["roster"] = roster_dict
-    
-#     return teams
-
 def get_team_dicts(teams_html):
     teams = {}
     for team in teams_html:
@@ -64,12 +41,24 @@ def get_team_dicts(teams_html):
             p_dict = {}
             p_dict["role"] = p.find("td", {"data-key": "role"}).text.upper()
             p_dict["name"] = p.find("td", {"data-key": "name"}).text.title()
-            # p_dict["id"] = int(p["data-id"])
+            p_dict["id"] = int(p["data-id"])
             p_dict["club"] = p.find("td", {"data-key": "team"}).text.upper()
-            # p_dict["price"] = int(p.find("td", {"data-key": "price"}).text)
+            p_dict["price"] = int(p.find("td", {"data-key": "price"}).text)
             p_dict["cost"] = int(p.find("td", {"data-key": "cost"}).text)
             p_dict["confirm"] = cost2confirm(p_dict["cost"])
             roster_dict_list.append(p_dict)
         teams[team_name]["roster_table"] = roster_dict_list
     
     return teams
+
+
+def compute_gain_confirm(roster, selected):
+    total_gain = 0
+    total_confirm = 0
+    for p in roster:
+        if p["name"] in selected:
+            total_confirm += p["confirm"]
+        else:
+            total_gain += p["cost"]
+    
+    return total_gain, total_confirm

@@ -3,7 +3,7 @@ import requests
 from bs4 import BeautifulSoup
 import pandas as pd
 
-from utils import get_team_dicts
+from utils import get_team_dicts, compute_gain_confirm
 
 
 def app():
@@ -24,7 +24,10 @@ def app():
         teams_list
     )
 
-    df_team = pd.DataFrame(teams[team_select]["roster_table"])
+    roster = teams[team_select]["roster_table"]
+    df_team = pd.DataFrame(roster, columns=["role", "name", "club", "cost", "confirm"])
+    player_names = df_team["name"]
+
     df_team.columns = ["Ruolo", "Giocatore", "Club", "Quot.", "Conferma"]
 
     # CSS to inject contained in a string
@@ -40,52 +43,15 @@ def app():
 
     st.table(df_team)
 
-    # role, name, club, cost, confirm = st.columns(5)
+    selected_players = st.multiselect("Seleziona i giocatori da riconfermare:", player_names)
 
-    # with role:
-    #     st.caption("Ruolo")
-    # with name:
-    #     st.caption("Calciatore")
-    # with club:
-    #     st.caption("Club")
-    # with cost:
-    #     st.caption("Quotazione")
-    # with confirm:
-    #     st.caption("Riconferma")
-
-
-    # roster = teams[team_select]["roster"]
-    # p_total_cost = 0
-    # p_total_confirm = 0
-    # for player in roster:
-    #     with role:
-    #         st.write(roster[player]["role"])
-    #     with name:
-    #         # keep_player = st.checkbox(player, key=player)
-    #         st.write(player)
-    #     with club:
-    #         st.write(roster[player]["club"])
-    #     with cost:
-    #         p_cost = roster[player]["cost"]
-    #         p_total_cost += p_cost
-    #         st.write(str(p_cost))
-    #     with confirm:
-    #         p_confirm = roster[player]["confirm"]
-    #         p_total_confirm += p_confirm
-    #         st.write(str(p_confirm))
-        
-    #     # if keep_player:
-    #     #     p_total_confirm += p_confirm
-    #     # else:
-    #     #     p_total_cost += p_cost
-
-
-    # _, _, _, total_cost, total_confirm = st.columns(5)
-
-    # with total_cost:
-    #     st.caption("Valore squadra")
-    #     st.write(str(p_total_cost))
-
-    # with total_confirm:
-    #     st.caption("Totale riconferma")
-    #     st.write(str(p_total_confirm))
+    compute_costs = st.button("Calcola costi")
+    if compute_costs:
+        total_gain, total_confirm =  compute_gain_confirm(roster, selected_players)
+        gain_cost, confirm_cost = st.columns(2)
+        with gain_cost:
+            st.caption("Crediti incassati")
+            st.write(str(total_gain))
+        with confirm_cost:
+            st.caption("Costo riconferme")
+            st.write(str(total_confirm))
