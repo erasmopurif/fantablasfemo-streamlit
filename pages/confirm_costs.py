@@ -25,7 +25,7 @@ def app():
     )
 
     df_team = pd.DataFrame(teams[team_select]["roster_table"])
-    df_team.columns = ["Ruolo", "Giocatore", "Club", "Quotazione", "Riconferma"]
+    df_team.columns = ["Ruolo", "Giocatore", "Club", "Quot.", "Conferma"]
 
     # CSS to inject contained in a string
     hide_table_row_index = """
