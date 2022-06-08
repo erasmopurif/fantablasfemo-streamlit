@@ -48,7 +48,14 @@ def app():
     compute_costs = st.button("Calcola costi")
     if compute_costs:
         total_gain, total_confirm =  compute_gain_confirm(roster, selected_players)
-        st.caption("Crediti incassati")
+        st.caption("Crediti di partenza")
+        base_coins = teams[team_select]["res_coins"]
+        st.write(str(base_coins))
+        st.caption("Crediti incassati cessioni")
         st.write(str(total_gain))
         st.caption("Costo riconferme")
         st.write(str(total_confirm))
+        res_coins = (int(base_coins) + total_gain) - total_confirm
+        st.caption("Crediti residui finali")
+        st.write(str(res_coins))
+
