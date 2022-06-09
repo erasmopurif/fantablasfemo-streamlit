@@ -8,10 +8,10 @@ st.markdown(
     """
     ### *"La bestemmia è libera"*
     ---
-    #### Riferimenti ufficiali del **Fantablasfemo Manager**:
+    #### Riferimenti ufficiali:
     * [Lega Fantacalcio.it](https://leghe.fantacalcio.it/fantablasfemo)
     * [Regolamento](https://drive.google.com/file/d/17l29sVD2nuyYNJFIPYyuePiOj9ZVKGEH/view?usp=sharing) 
     ---
-    ##### 👈 Funzionalità aggiuntive nel menu laterale.
+    ##### 👈 Funzionalità nel menu laterale.
     """
 )

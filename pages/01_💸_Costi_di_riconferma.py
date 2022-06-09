@@ -46,6 +46,8 @@ selected_players = st.multiselect("Seleziona i giocatori da riconfermare:", play
 
 compute_costs = st.button("Calcola costi")
 if compute_costs:
+    st.caption("Calciatori confermati")
+    st.info(", ".join(selected_players))
     total_gain, total_confirm =  compute_gain_confirm(roster, selected_players)
     st.caption("Crediti di partenza")
     base_coins = teams[team_select]["res_coins"]
