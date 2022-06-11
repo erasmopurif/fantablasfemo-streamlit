@@ -1,5 +1,10 @@
 import streamlit as st
 
+# Page Config
+st.set_page_config(
+    page_title="Fantablasfemo Manager",
+    page_icon="⚽️"
+)
 
 # Title of the main page
 st.title("Fantablasfemo Manager")

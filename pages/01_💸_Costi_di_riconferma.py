@@ -5,6 +5,11 @@ import pandas as pd
 
 from utils import get_team_dicts, compute_gain_confirm
 
+# Page Config
+st.set_page_config(
+    page_title="Costi di riconferma",
+    page_icon="⚽️"
+)
 
 st.header("Costi di riconferma")
 
