@@ -15,7 +15,7 @@ st.markdown(
     ---
     #### Riferimenti ufficiali:
     * [Lega Fantacalcio.it](https://leghe.fantacalcio.it/fantablasfemo)
-    * [Regolamento](https://drive.google.com/file/d/17l29sVD2nuyYNJFIPYyuePiOj9ZVKGEH/view?usp=sharing) 
+    * [Regolamento](https://drive.google.com/file/d/16SYswiqQAMYSni5mGszGA3wKFlDP2TpC/view?usp=sharing) 
     ---
     ##### 👈 Funzionalità nel menu laterale.
     """
