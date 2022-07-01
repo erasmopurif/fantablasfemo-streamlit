@@ -23,7 +23,7 @@ def get_team_dicts(teams_html):
         teams[team_name]["trainer"] = team.h5.text
         teams[team_name]["res_coins"] = team.small.next.next.strip()
         
-        roster = team.table.tbody.find_all("tr")[:25]
+        roster = team.table.tbody.find_all("tr")[:-1]
         roster_dict = {}
         for p in roster:
             p_name = p.find("td", {"data-key": "name"}).text.title()
