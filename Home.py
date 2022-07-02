@@ -15,7 +15,8 @@ st.markdown(
     ---
     #### Riferimenti ufficiali:
     * [Lega Fantacalcio.it](https://leghe.fantacalcio.it/fantablasfemo)
-    * [Regolamento](https://drive.google.com/file/d/16SYswiqQAMYSni5mGszGA3wKFlDP2TpC/view?usp=sharing) 
+    * [Regolamento](https://drive.google.com/file/d/16SYswiqQAMYSni5mGszGA3wKFlDP2TpC/view?usp=sharing)
+    * [Rose 2022/23](https://docs.google.com/spreadsheets/d/18tF2ZgumgHW9elq8P3n4nG8LogpPFU9U/edit?usp=sharing&ouid=109097689342845633513&rtpof=true&sd=true)
     ---
     ##### 👈 Funzionalità nel menu laterale.
     """
