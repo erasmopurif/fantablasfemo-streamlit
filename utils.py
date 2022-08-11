@@ -1,6 +1,4 @@
-import requests
-from bs4 import BeautifulSoup
-import pandas as pd
+import math
 
 
 def cost2confirm(cost):
@@ -42,7 +40,7 @@ def get_team_dicts(teams_html, df_players):
             roster_dict[p_name]["link"] = p.find(class_="player-link", href=True)["href"]
             fvm = df_players[df_players[1]==p_name][10].values[0]
             roster_dict[p_name]["fvm-1000"] = fvm
-            roster_dict[p_name]["fvm-300"] = round(fvm/3)
+            roster_dict[p_name]["fvm-300"] = math.ceil(fvm/3.33)
         teams[team_name]["roster"] = roster_dict
 
         roster_dict_list = []
@@ -58,7 +56,7 @@ def get_team_dicts(teams_html, df_players):
             p_dict["link"] = p.find(class_="player-link", href=True)["href"]
             fvm = df_players[df_players[1]==p_dict["name"]][10].values[0]
             p_dict["fvm-1000"] = fvm
-            p_dict["fvm-300"] = round(fvm/3)
+            p_dict["fvm-300"] = math.ceil(fvm/3.33)
             roster_dict_list.append(p_dict)
         teams[team_name]["roster_table"] = roster_dict_list
     
