@@ -38,7 +38,10 @@ def get_team_dicts(teams_html, df_players):
             roster_dict[p_name]["cost"] = int(p.find("td", {"data-key": "cost"}).text)
             roster_dict[p_name]["confirm"] = cost2confirm(roster_dict[p_name]["cost"])
             roster_dict[p_name]["link"] = p.find(class_="player-link", href=True)["href"]
-            fvm = df_players[df_players[1]==p_name][10].values[0]
+            try:
+                fvm = df_players[df_players[1]==p_name][10].values[0]
+            except:
+                fvm = 0
             roster_dict[p_name]["fvm-1000"] = fvm
             roster_dict[p_name]["fvm-300"] = math.ceil(fvm/3.33)
         teams[team_name]["roster"] = roster_dict
@@ -54,7 +57,10 @@ def get_team_dicts(teams_html, df_players):
             p_dict["cost"] = int(p.find("td", {"data-key": "cost"}).text)
             p_dict["confirm"] = cost2confirm(p_dict["cost"])
             p_dict["link"] = p.find(class_="player-link", href=True)["href"]
-            fvm = df_players[df_players[1]==p_dict["name"]][10].values[0]
+            try:
+                fvm = df_players[df_players[1]==p_dict["name"]][10].values[0]
+            except:
+                fvm = 0
             p_dict["fvm-1000"] = fvm
             p_dict["fvm-300"] = math.ceil(fvm/3.33)
             roster_dict_list.append(p_dict)
