@@ -1,5 +1,6 @@
 ### SPECIFIC IGNORES ###
 resources/
+archive/
 app_*.py
 test_nb.ipynb
 tests.py
