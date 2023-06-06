@@ -19,9 +19,12 @@ rose_res = requests.get(ROSE_URL)
 rose_html = BeautifulSoup(rose_res.text, "html.parser")
 teams_html = rose_html.find_all("li", {"class": "list-rosters-item"})
 
-PLAYER_LIST_URL = "https://drive.google.com/file/d/1PVfvHppknf512c6CmdMLnsdfF9-g5UNV/view?usp=sharing"
-PLAYER_LIST_URL = "https://drive.google.com/uc?id=" + PLAYER_LIST_URL.split('/')[-2]
-df_players = pd.read_csv(PLAYER_LIST_URL, header=None)
+try:
+    PLAYER_LIST_URL = "https://drive.google.com/file/d/1PVfvHppknf512c6CmdMLnsdfF9-g5UNV/view?usp=sharing"
+    PLAYER_LIST_URL = "https://drive.google.com/uc?id=" + PLAYER_LIST_URL.split('/')[-2]
+    df_players = pd.read_csv(PLAYER_LIST_URL, header=None)
+except:
+    df_players = None
 
 teams = get_team_dicts(teams_html, df_players)
 teams_list = [k for k in teams]
