@@ -9,6 +9,8 @@ st.set_page_config(
 # Title of the main page
 st.title("Fantablasfemo Manager")
 
+# [Rose 2022/23](https://docs.google.com/spreadsheets/d/1b7TUiWE43fMGDPvSuEPtXNs5PI4pdVAl/edit?usp=sharing&ouid=109097689342845633513&rtpof=true&sd=true)
+
 st.markdown(
     """
     ### *"La bestemmia è libera"*
@@ -20,5 +22,3 @@ st.markdown(
     ##### 👈 Funzionalità nel menu laterale.
     """
 )
-
-# * [Rose 2022/23](https://docs.google.com/spreadsheets/d/1b7TUiWE43fMGDPvSuEPtXNs5PI4pdVAl/edit?usp=sharing&ouid=109097689342845633513&rtpof=true&sd=true)
