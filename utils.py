@@ -29,7 +29,7 @@ def get_team_dicts(teams_html):
         roster = team.table.tbody.find_all("tr")[:-1]
         roster_dict = {}
         for p in roster:
-            p_name = p.find("td", {"data-key": "name"}).text.title()
+            p_name = p.find("td", {"data-key": "name"}).text.title().strip()
             roster_dict[p_name] = {}
             roster_dict[p_name]["id"] = int(p["data-id"])
             roster_dict[p_name]["role"] = p.find("td", {"data-key": "role"}).text.upper()
@@ -50,7 +50,7 @@ def get_team_dicts(teams_html):
         for p in roster:
             p_dict = {}
             p_dict["role"] = p.find("td", {"data-key": "role"}).text.upper()
-            p_dict["name"] = p.find("td", {"data-key": "name"}).text.title()
+            p_dict["name"] = p.find("td", {"data-key": "name"}).text.title().strip()
             p_dict["id"] = int(p["data-id"])
             p_dict["club"] = p.find("td", {"data-key": "team"}).find_next("td", {"data-key": "team"}).text.upper().replace("\n", "")
             p_dict["price"] = int(p.find("td", {"data-key": "price"}).text)
